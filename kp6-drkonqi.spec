@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	6.0.2
+%define		kdeplasmaver	6.0.3
 %define		qtver		5.15.2
 %define		kpname		drkonqi
 Summary:	drkonqi
 Name:		kp6-%{kpname}
-Version:	6.0.2
+Version:	6.0.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	4dc11da805b7410ea4df2049723fa272
+# Source0-md5:	497e9cd3c74e79c1401fbacdb5b71513
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel
@@ -45,6 +45,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-qt6-1-devel
+BuildRequires:	polkit-qt6-1-gui-devel
 BuildRequires:	qt6-build >= %{qtver}
 BuildRequires:	qt6-qmake
 BuildRequires:	rpmbuild(macros) >= 1.596
