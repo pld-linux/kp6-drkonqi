@@ -80,10 +80,11 @@ ctest
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_iconsdir}/{breeze-dark,breeze}
-install -d $RPM_BUILD_ROOT%{systemdunitdir}
+install -d $RPM_BUILD_ROOT%{systemdunitdir}/systemd-coredump@.service.wants
 
 %ninja_install -C build
 
+mv $RPM_BUILD_ROOT%{_prefix}%{systemdunitdir}/systemd-coredump@.service.wants/drkonqi-coredump-processor@.service $RPM_BUILD_ROOT%{systemdunitdir}/systemd-coredump@.service.wants/
 mv $RPM_BUILD_ROOT%{_prefix}%{systemdunitdir}/drkonqi-coredump-processor@.service $RPM_BUILD_ROOT%{systemdunitdir}/
 
 %find_lang %{kpname} --all-name --with-kde
@@ -110,17 +111,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/drkonqi-coredump-gui
 %{_desktopdir}/org.kde.drkonqi.coredump.gui.desktop
 %attr(755,root,root) %{_bindir}/drkonqi-sentry-data
-%{_prefix}%{systemdunitdir}/systemd-coredump@.service.wants/drkonqi-coredump-processor@.service
+%dir %{systemdunitdir}/systemd-coredump@.service.wants
+%{systemdunitdir}/systemd-coredump@.service.wants/drkonqi-coredump-processor@.service
+%dir %{systemduserunitdir}/default.target.wants
 %{systemduserunitdir}/default.target.wants/drkonqi-coredump-cleanup.service
 %{systemduserunitdir}/default.target.wants/drkonqi-sentry-postman.path
 %{systemduserunitdir}/drkonqi-coredump-pickup.service
 %{systemduserunitdir}/drkonqi-sentry-postman.path
 %{systemduserunitdir}/drkonqi-sentry-postman.service
 %{systemduserunitdir}/drkonqi-sentry-postman.timer
+%dir %{systemduserunitdir}/plasma-core.target.wants
 %{systemduserunitdir}/plasma-core.target.wants/drkonqi-coredump-pickup.service
 %{systemduserunitdir}/plasma-core.target.wants/drkonqi-sentry-postman.path
 %{systemduserunitdir}/plasma-core.target.wants/drkonqi-sentry-postman.timer
+%dir %{systemduserunitdir}/sockets.target.wants
 %{systemduserunitdir}/sockets.target.wants/drkonqi-coredump-launcher.socket
+%dir %{systemduserunitdir}/timers.target.wants
 %{systemduserunitdir}/timers.target.wants/drkonqi-coredump-cleanup.timer
 %{systemduserunitdir}/timers.target.wants/drkonqi-sentry-postman.timer
 %attr(755,root,root) %{_prefix}/libexec/drkonqi-sentry-postman
