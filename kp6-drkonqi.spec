@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	6.3.4
+%define		kdeplasmaver	6.3.5
 %define		qtver		5.15.2
 %define		kpname		drkonqi
 Summary:	drkonqi
 Name:		kp6-%{kpname}
-Version:	6.3.4
+Version:	6.3.5
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	3dd1d5edf698a4b0418f7b31c8e05ff6
+# Source0-md5:	7491351b84d65a96c4dfb8840cddb7da
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel
@@ -55,7 +55,8 @@ BuildRequires:	xz
 Requires:	python3-psutil
 Requires:	python3-pygdbmi
 Requires:	python3-sentry-sdk
-Obsoletes:	kp5-%{kpname} < %{version}
+Requires(post,postun):	desktop-file-utils
+Obsoletes:	kp5-%{kpname} < 6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -91,6 +92,12 @@ mv $RPM_BUILD_ROOT%{_prefix}%{systemdunitdir}/drkonqi-coredump-processor@.servic
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+%update_desktop_database_post
+
+%postun
+%update_desktop_database_postun[5~
 
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
