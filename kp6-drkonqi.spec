@@ -97,7 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_desktop_database_post
 
 %postun
-%update_desktop_database_postun[5~
+%update_desktop_database_postun
 
 %files -f %{kpname}.lang
 %defattr(644,root,root,755)
