@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	6.5.5
+%define		kdeplasmaver	6.6.0
 %define		qtver		5.15.2
 %define		kpname		drkonqi
 Summary:	drkonqi
 Name:		kp6-%{kpname}
-Version:	6.5.5
-Release:	2
+Version:	6.6.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	1ce1de5f9d659598085d0bcd506cbdbe
+# Source0-md5:	ce6b0a1f65f4b463deace2652a2949bd
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel
@@ -111,8 +111,6 @@ rm -rf $RPM_BUILD_ROOT
 %{systemduserunitdir}/drkonqi-coredump-cleanup.timer
 %{systemduserunitdir}/drkonqi-coredump-launcher.socket
 %{systemduserunitdir}/drkonqi-coredump-launcher@.service
-%dir %{_libdir}/qt6/plugins/drkonqi
-%{_libdir}/qt6/plugins/drkonqi/KDECoredumpNotifierTruck.so
 %attr(755,root,root) %{_prefix}/libexec/drkonqi-coredump-cleanup
 %attr(755,root,root) %{_prefix}/libexec/drkonqi-coredump-launcher
 %attr(755,root,root) %{_prefix}/libexec/drkonqi-coredump-processor
@@ -142,3 +140,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/system-services/org.kde.drkonqi.service
 %{_datadir}/dbus-1/system.d/org.kde.drkonqi.conf
 %{_datadir}/polkit-1/actions/org.kde.drkonqi.policy
+%{_datadir}/knotifications6/drkonqi-coredump-launcher.notifyrc
