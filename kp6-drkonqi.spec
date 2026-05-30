@@ -63,6 +63,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Plasma crash handler, gives the user feedback if a program crashed.
 
+%description -l pl.UTF-8
+Obsługa "crashy" Plazmy, daje informacje zwrotną użytkownikowi, gdy
+program się "wyłoży".
+
 %prep
 %setup -q -n %{kpname}-%{version}
 
