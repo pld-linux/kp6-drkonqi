@@ -1,17 +1,17 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeplasmaver	6.6.5
+%define		kdeplasmaver	6.7.0
 %define		qtver		5.15.2
 %define		kpname		drkonqi
 Summary:	drkonqi
 Name:		kp6-%{kpname}
-Version:	6.6.5
+Version:	6.7.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/plasma/%{kdeplasmaver}/%{kpname}-%{version}.tar.xz
-# Source0-md5:	1ce72a462b97556cabfe03ddb258040b
+# Source0-md5:	7a2f8aeaeea6e36f3e1d2e93c9a1835d
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	Qt6DBus-devel
@@ -36,11 +36,11 @@ BuildRequires:	kf6-ki18n-devel
 BuildRequires:	kf6-kiconthemes-devel
 BuildRequires:	kf6-kservice-devel
 BuildRequires:	kf6-kstatusnotifieritem-devel
+BuildRequires:	kf6-kuserfeedback-devel
 BuildRequires:	kf6-kwidgetsaddons-devel
 BuildRequires:	kf6-kwindowsystem-devel
 BuildRequires:	kf6-syntax-highlighting-devel
 BuildRequires:	kp6-kdecoration-devel
-BuildRequires:	kuserfeedback-devel >= 1.2.0
 BuildRequires:	libstdc++-devel
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
